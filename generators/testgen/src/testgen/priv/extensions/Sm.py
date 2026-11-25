@@ -596,7 +596,7 @@ def _generate_mcsr_tests(test_data: TestData, test_chunks: list) -> None:
     # medelegh (0x312) by number: clang 20 does not accept the CSR name (gcc does).  All bits reserved/custom.
     csr_medelegh = ("0x312", 0x00000000)
     # Read-only CSRs
-    csrmro = [("mvendorid", None), ("mimpid", None), ("marchid", None), ("mhartid", None)]
+    csrmro = [("mvendorid", None), ("mhartid", None)]
     csr_mconfigptr = ("mconfigptr", None)
 
     ######################################

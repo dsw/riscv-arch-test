@@ -1,0 +1,11 @@
+# NRM ACT4 configuration. Run ACT4 from the riscv-arch-test repository root.
+# External executables are reached through repository-local externs/ symlinks.
+name: nrm-rv64i
+compiler_exe: ./externs/llvm-root/build/bin/clang
+objdump_exe: riscv64-unknown-elf-objdump
+ref_model_exe: ./externs/sail-riscv-root/build/c_emulator/sail_riscv_sim
+udb_config: nrm-rv64i.yaml
+linker_script: link.ld
+dut_include_dir: .
+harts: 1
+include_priv_tests: true

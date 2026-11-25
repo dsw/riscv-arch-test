@@ -1,0 +1,60 @@
+{
+  "name": "nrm-rv64i",
+  "implemented_extensions": {
+    "I": "2.1",
+    "Zicsr": "2.0",
+    "Zifencei": "2.0.0",
+    "Zalrsc": "1.0.0",
+    "U": "1.0.0",
+    "Sm": "1.12.0"
+  },
+  "xlen": 64,
+  "hart_count": 1,
+  "privileges": {
+    "M": true,
+    "S": false,
+    "U": true
+  },
+  "has_multiply_divide": false,
+  "has_full_atomic_A": false,
+  "has_fpu": false,
+  "has_compressed": false,
+  "misa_writable": false,
+  "mcountinhibit_implemented": false,
+  "mcounteren_writable_mask": "0x00000000",
+  "mstatus_fs_writable": false,
+  "mstatus_vs_writable": false,
+  "menvcfg_fiom_writable": false,
+  "mtvec_direct_alignment_bytes": 4,
+  "mtvec_vectored_supported": false,
+  "machine_interrupts": {
+    "software": false,
+    "timer": false,
+    "external": false
+  },
+  "pmp_entries": 0,
+  "physical_address_bits": 39,
+  "memory": {
+    "test_base": "0x00010000",
+    "elf_region_end": "0x5ff00000",
+    "stack_bottom": "0x5ff00000",
+    "stack_top": "0x60000000",
+    "sail_memory_base": "0x00000000",
+    "sail_memory_end": "0x60000000"
+  },
+  "verification_required": [
+    "physical_address_bits",
+    "mcounteren_writable_mask (assumed hardwired zero)",
+    "mstatus FS and VS legality (assumed hardwired zero)",
+    "LR/SC reservation granule, invalidation and SC failure behavior",
+    "misaligned load/store/LR/SC exceptions and exception priority",
+    "mepc/mcause/mtval reporting for each exception class",
+    "WFI availability and behavior",
+    "user-mode test termination / RVMODEL_HALT_PASS and RVMODEL_HALT_FAIL",
+    "absence of machine interrupts versus ACT4 privileged test selection",
+    "whether all unimplemented CSR addresses trap in M and U modes"
+  ],
+  "verification_evidence": {
+    "mcountinhibit_implemented": "Verified false: misc_csr_boundary_and_priv_enforcement.s tests M-mode CSR 0x320 read and write; both trap with mcause=2 and exact mtval encodings 0x32002973/0x32039973. Full instruction log was supplied."
+  }
+}
