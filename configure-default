@@ -1,0 +1,23 @@
+#!/bin/bash
+
+# run a default configuation of this repo
+
+if test "x${DEWDROP_ROOT}" == "x"; then
+    echo "must set env var DEWDROP_ROOT"
+    exit 1
+fi
+
+# **** configure this script
+
+set -o nounset                  # exit on use of an unset var
+set -o errexit                  # exit on an error
+set -o pipefail                 # even in a pipe
+set -x                          # echo each line
+
+# ****
+
+ACT4_GEMS_ROOT=${DEWDROP_ROOT}/.local/share/act4-gems \
+SAIL_RISCV_ROOT=${DEWDROP_ROOT}/sail-riscv \
+LLVM_ROOT=${DEWDROP_ROOT}/llvm-clang \
+NRM_ROOT=${DEWDROP_ROOT}/naive-register-machine \
+  ./configure

@@ -1,0 +1,58 @@
+#!/bin/bash
+
+# configure this repo
+
+# **** extract the configurations from the env vars
+
+# act4-gems
+if test "x${ACT4_GEMS_ROOT}" == "x"; then
+    echo "must set env var ACT4_GEMS_ROOT"
+    exit 1
+fi
+
+# sail-riscv
+if test "x${SAIL_RISCV_ROOT}" == "x"; then
+    echo "must set env var SAIL_RISCV_ROOT"
+    exit 1
+fi
+
+# llvm
+if test "x${LLVM_ROOT}" == "x"; then
+    echo "must set env var LLVM_ROOT"
+    exit 1
+fi
+
+# naive-register-machine
+if test "x${NRM_ROOT}" == "x"; then
+    echo "must set env var NRM_ROOT"
+    exit 1
+fi
+
+
+# **** configure this script
+
+set -o nounset                  # exit on use of an unset var
+set -o errexit                  # exit on an error
+set -o pipefail                 # even in a pipe
+set -x                          # echo each line
+
+# **** make externs
+
+rm -rf externs
+mkdir -p externs
+
+# act4-gems
+rm -f ./externs/act4-gems-root
+ln -s ${ACT4_GEMS_ROOT} externs/act4-gems-root
+
+# sail-riscv
+rm -f ./externs/sail-riscv-root
+ln -s ${SAIL_RISCV_ROOT} externs/sail-riscv-root
+
+# llvm
+rm -f ./externs/llvm-root
+ln -s ${LLVM_ROOT} externs/llvm-root
+
+# naive-register-machine
+rm -f ./externs/nrm-root
+ln -s ${NRM_ROOT} externs/nrm-root

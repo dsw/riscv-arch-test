@@ -48,3 +48,10 @@ docs/crd/build
 coverpoints/norm/norm-rules.json
 coverpoints/norm/yaml/new
 coverpoints/norm/yaml/chapters
+
+# externs
+externs
+
+# hide
+Hide*
+Diff*
