@@ -56,3 +56,6 @@ ln -s ${LLVM_ROOT} externs/llvm-root
 # naive-register-machine
 rm -f ./externs/nrm-root
 ln -s ${NRM_ROOT} externs/nrm-root
+
+# run the config target
+./maked config
