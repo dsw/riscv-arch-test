@@ -1,3 +1,4 @@
 #!/bin/bash
 
-make -C config/cores/nrm $@
+PATH="$(ruby -rrubygems -e 'print Gem.user_dir')/bin:$PATH" \
+make -C config/cores/nrm "$@"
